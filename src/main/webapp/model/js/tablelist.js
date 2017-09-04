@@ -20,9 +20,9 @@ var TableInit = function () {
     oTableInit.Init = function () {
         $('#tablelist').bootstrapTable({
             url: 'tablelist.do', //请求后台的URL（*）
-            dataType:"json",
+            dataType: "json",
             method: 'POST', //请求方式（*）
-            contentType:"application/x-www-form-urlencoded",
+            contentType: "application/x-www-form-urlencoded",
             toolbar: '#toolbar', //工具按钮用哪个容器
             striped: true, //是否显示行间隔色
             cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
@@ -40,8 +40,8 @@ var TableInit = function () {
             showRefresh: true, //是否显示刷新按钮
             minimumCountColumns: 2, //最少允许的列数
             clickToSelect: true, //是否启用点击选中行
-            height: 500, //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
-            uniqueId: "menuId", //每一行的唯一标识，一般为主键列
+//            height: 500, //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+            uniqueId: "fieldName", //每一行的唯一标识，一般为主键列
             showToggle: true, //是否显示详细视图和列表视图的切换按钮
             cardView: false, //是否显示详细视图
             detailView: false, //是否显示父子表
@@ -49,7 +49,11 @@ var TableInit = function () {
                     checkbox: true
                 }, {
                     field: 'tableName',
-                    title: '模型名'
+                    title: '模型名',
+                    formatter: function (value, row, index) {
+                        var e = '<a href="#">' + row.tableName + '</a> ';
+                        return e;
+                    }
                 }, {
                     field: 'tableNameCn',
                     title: '模型名（中文）'
@@ -62,22 +66,26 @@ var TableInit = function () {
                 }, {
                     field: 'fieldNameCn',
                     title: '字段名（中文）'
-                },{
+                }, {
                     field: 'fieldDataType',
                     title: '数据类型'
-                },{
-                    field: 'fieldComment',
-                    title: '备注'
                 }, {
                     field: 'fieldSecurityType',
                     title: '安全分类'
-                },{
+                }, {
                     field: 'fieldSensitiveLevel',
                     title: '敏感级别'
-                },{
+                }, {
                     field: 'fieldFuzzyCode',
                     title: '脱敏ID'
-                } ]
+                }],
+            onClickRow:function(row){
+                 $("#fieldComment").html('');
+                 $("#fieldComment").append(row.fieldComment);
+            },
+            onDblClickRow:function(row){
+                $("#tableInfo").modal();
+            }
         });
     };
     //得到查询的参数
@@ -86,9 +94,9 @@ var TableInit = function () {
             limit: params.limit, //页面大小
             offset: params.offset, //页码
             modelName: $("#modelName").val(),
-            modelNameZh :$("#modelNameZh").val(),
-            fieldName :$("#fieldName").val(),
-            fieldNameZh :$("#fieldNameZh").val()
+            modelNameZh: $("#modelNameZh").val(),
+            fieldName: $("#fieldName").val(),
+            fieldNameZh: $("#fieldNameZh").val()
         };
         return temp;
     };
@@ -102,7 +110,7 @@ var ButtonInit = function () {
     oInit.Init = function () {
         //初始化页面上面的按钮事件
     };
-    
+
     return oInit;
 };
 

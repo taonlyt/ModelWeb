@@ -1,299 +1,324 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bamboo.model.dao.TableFieldDao">
-  <resultMap id="BaseResultMap" type="com.bamboo.model.beans.TableField">
-    <id column="TABLE_ID" jdbcType="INTEGER" property="tableId" />
-    <id column="TABLE_NAME" jdbcType="VARCHAR" property="tableName" />
-    <id column="FIELD_NAME" jdbcType="VARCHAR" property="fieldName" />
-    <result column="FIELD_SEQ" jdbcType="INTEGER" property="fieldSeq" />
-    <result column="FIELD_NAME_CN" jdbcType="VARCHAR" property="fieldNameCn" />
-    <result column="FIELD_DATA_TYPE" jdbcType="VARCHAR" property="fieldDataType" />
-    <result column="FIELD_COMMENT" jdbcType="VARCHAR" property="fieldComment" />
-    <result column="FIELD_SECURITY_TYPE" jdbcType="VARCHAR" property="fieldSecurityType" />
-    <result column="FIELD_SENSITIVE_LEVEL" jdbcType="VARCHAR" property="fieldSensitiveLevel" />
-    <result column="FIELD_FUZZY_CODE" jdbcType="VARCHAR" property="fieldFuzzyCode" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+    <resultMap id="BaseResultMap" type="com.bamboo.model.beans.TableField">
+        <id column="TABLE_ID" jdbcType="INTEGER" property="tableId" />
+        <id column="TABLE_NAME" jdbcType="VARCHAR" property="tableName" />
+        <id column="FIELD_NAME" jdbcType="VARCHAR" property="fieldName" />
+        <result column="FIELD_SEQ" jdbcType="INTEGER" property="fieldSeq" />
+        <result column="FIELD_NAME_CN" jdbcType="VARCHAR" property="fieldNameCn" />
+        <result column="FIELD_DATA_TYPE" jdbcType="VARCHAR" property="fieldDataType" />
+        <result column="FIELD_COMMENT" jdbcType="VARCHAR" property="fieldComment" />
+        <result column="FIELD_SECURITY_TYPE" jdbcType="VARCHAR" property="fieldSecurityType" />
+        <result column="FIELD_SENSITIVE_LEVEL" jdbcType="VARCHAR" property="fieldSensitiveLevel" />
+        <result column="FIELD_FUZZY_CODE" jdbcType="VARCHAR" property="fieldFuzzyCode" />
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        TABLE_ID, TABLE_NAME, FIELD_NAME, FIELD_SEQ, FIELD_NAME_CN, FIELD_DATA_TYPE, FIELD_COMMENT, 
+        FIELD_SECURITY_TYPE, FIELD_SENSITIVE_LEVEL, FIELD_FUZZY_CODE
+    </sql>
+    <select id="selectByFieldName" parameterType="com.bamboo.model.beans.QTableField" resultMap="BaseResultMap">
+        select
+       
+        <include refid="Base_Column_List" />
+        from table_field WHERE 1=1 
+        <if test="fieldName != null">
+           AND FIELD_NAME LIKE  concat('%',#{fieldName},'%') 
         </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    TABLE_ID, TABLE_NAME, FIELD_NAME, FIELD_SEQ, FIELD_NAME_CN, FIELD_DATA_TYPE, FIELD_COMMENT, 
-    FIELD_SECURITY_TYPE, FIELD_SENSITIVE_LEVEL, FIELD_FUZZY_CODE
-  </sql>
-  <select id="selectByExample" parameterType="com.bamboo.model.beans.TableFieldExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from table_field
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-    <if test="limit != null">
-      <if test="offset != null">
-        limit ${offset}, ${limit}
-      </if>
-      <if test="offset == null">
-        limit ${limit}
-      </if>
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="com.bamboo.model.beans.TableFieldKey" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from table_field
-    where TABLE_ID = #{tableId,jdbcType=INTEGER}
-      and TABLE_NAME = #{tableName,jdbcType=VARCHAR}
-      and FIELD_NAME = #{fieldName,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="com.bamboo.model.beans.TableFieldKey">
-    delete from table_field
-    where TABLE_ID = #{tableId,jdbcType=INTEGER}
-      and TABLE_NAME = #{tableName,jdbcType=VARCHAR}
-      and FIELD_NAME = #{fieldName,jdbcType=VARCHAR}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.bamboo.model.beans.TableFieldExample">
-    delete from table_field
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.bamboo.model.beans.TableField">
-    insert into table_field (TABLE_ID, TABLE_NAME, FIELD_NAME, 
-      FIELD_SEQ, FIELD_NAME_CN, FIELD_DATA_TYPE, 
-      FIELD_COMMENT, FIELD_SECURITY_TYPE, FIELD_SENSITIVE_LEVEL, 
-      FIELD_FUZZY_CODE)
-    values (#{tableId,jdbcType=INTEGER}, #{tableName,jdbcType=VARCHAR}, #{fieldName,jdbcType=VARCHAR}, 
-      #{fieldSeq,jdbcType=INTEGER}, #{fieldNameCn,jdbcType=VARCHAR}, #{fieldDataType,jdbcType=VARCHAR}, 
-      #{fieldComment,jdbcType=VARCHAR}, #{fieldSecurityType,jdbcType=VARCHAR}, #{fieldSensitiveLevel,jdbcType=VARCHAR}, 
-      #{fieldFuzzyCode,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.bamboo.model.beans.TableField">
-    insert into table_field
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="tableId != null">
-        TABLE_ID,
-      </if>
-      <if test="tableName != null">
-        TABLE_NAME,
-      </if>
-      <if test="fieldName != null">
-        FIELD_NAME,
-      </if>
-      <if test="fieldSeq != null">
-        FIELD_SEQ,
-      </if>
-      <if test="fieldNameCn != null">
-        FIELD_NAME_CN,
-      </if>
-      <if test="fieldDataType != null">
-        FIELD_DATA_TYPE,
-      </if>
-      <if test="fieldComment != null">
-        FIELD_COMMENT,
-      </if>
-      <if test="fieldSecurityType != null">
-        FIELD_SECURITY_TYPE,
-      </if>
-      <if test="fieldSensitiveLevel != null">
-        FIELD_SENSITIVE_LEVEL,
-      </if>
-      <if test="fieldFuzzyCode != null">
-        FIELD_FUZZY_CODE,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="tableId != null">
-        #{tableId,jdbcType=INTEGER},
-      </if>
-      <if test="tableName != null">
-        #{tableName,jdbcType=VARCHAR},
-      </if>
-      <if test="fieldName != null">
-        #{fieldName,jdbcType=VARCHAR},
-      </if>
-      <if test="fieldSeq != null">
-        #{fieldSeq,jdbcType=INTEGER},
-      </if>
-      <if test="fieldNameCn != null">
-        #{fieldNameCn,jdbcType=VARCHAR},
-      </if>
-      <if test="fieldDataType != null">
-        #{fieldDataType,jdbcType=VARCHAR},
-      </if>
-      <if test="fieldComment != null">
-        #{fieldComment,jdbcType=VARCHAR},
-      </if>
-      <if test="fieldSecurityType != null">
-        #{fieldSecurityType,jdbcType=VARCHAR},
-      </if>
-      <if test="fieldSensitiveLevel != null">
-        #{fieldSensitiveLevel,jdbcType=VARCHAR},
-      </if>
-      <if test="fieldFuzzyCode != null">
-        #{fieldFuzzyCode,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.bamboo.model.beans.TableFieldExample" resultType="java.lang.Long">
-    select count(*) from table_field
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update table_field
-    <set>
-      <if test="record.tableId != null">
-        TABLE_ID = #{record.tableId,jdbcType=INTEGER},
-      </if>
-      <if test="record.tableName != null">
+        <if test="fieldNameCn != null">
+           AND FIELD_NAME_CN LIKE  concat('%',#{fieldNameCn},'%') 
+        </if>
+        <if test="tableName != null">
+           AND TABLE_NAME LIKE  concat('%',#{tableName},'%') 
+        </if>
+        order by FIELD_SEQ asc 
+        <if test="limit != null">
+            <if test="offset != null">
+                limit ${offset}, ${limit}
+            </if>
+            <if test="offset == null">
+                limit ${limit}
+            </if>
+        </if>
+         
+    </select>
+    <select id="selectByExample" parameterType="com.bamboo.model.beans.TableFieldExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from table_field
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+        <if test="limit != null">
+            <if test="offset != null">
+                limit ${offset}, ${limit}
+            </if>
+            <if test="offset == null">
+                limit ${limit}
+            </if>
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="com.bamboo.model.beans.TableFieldKey" resultMap="BaseResultMap">
+        select 
+        <include refid="Base_Column_List" />
+        from table_field
+        where TABLE_ID = #{tableId,jdbcType=INTEGER}
+        and TABLE_NAME = #{tableName,jdbcType=VARCHAR}
+        and FIELD_NAME = #{fieldName,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="com.bamboo.model.beans.TableFieldKey">
+        delete from table_field
+        where TABLE_ID = #{tableId,jdbcType=INTEGER}
+        and TABLE_NAME = #{tableName,jdbcType=VARCHAR}
+        and FIELD_NAME = #{fieldName,jdbcType=VARCHAR}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.bamboo.model.beans.TableFieldExample">
+        delete from table_field
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.bamboo.model.beans.TableField">
+        insert into table_field (TABLE_ID, TABLE_NAME, FIELD_NAME, 
+        FIELD_SEQ, FIELD_NAME_CN, FIELD_DATA_TYPE, 
+        FIELD_COMMENT, FIELD_SECURITY_TYPE, FIELD_SENSITIVE_LEVEL, 
+        FIELD_FUZZY_CODE)
+        values (#{tableId,jdbcType=INTEGER}, #{tableName,jdbcType=VARCHAR}, #{fieldName,jdbcType=VARCHAR}, 
+        #{fieldSeq,jdbcType=INTEGER}, #{fieldNameCn,jdbcType=VARCHAR}, #{fieldDataType,jdbcType=VARCHAR}, 
+        #{fieldComment,jdbcType=VARCHAR}, #{fieldSecurityType,jdbcType=VARCHAR}, #{fieldSensitiveLevel,jdbcType=VARCHAR}, 
+        #{fieldFuzzyCode,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.bamboo.model.beans.TableField">
+        insert into table_field
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tableId != null">
+                TABLE_ID,
+            </if>
+            <if test="tableName != null">
+                TABLE_NAME,
+            </if>
+            <if test="fieldName != null">
+                FIELD_NAME,
+            </if>
+            <if test="fieldSeq != null">
+                FIELD_SEQ,
+            </if>
+            <if test="fieldNameCn != null">
+                FIELD_NAME_CN,
+            </if>
+            <if test="fieldDataType != null">
+                FIELD_DATA_TYPE,
+            </if>
+            <if test="fieldComment != null">
+                FIELD_COMMENT,
+            </if>
+            <if test="fieldSecurityType != null">
+                FIELD_SECURITY_TYPE,
+            </if>
+            <if test="fieldSensitiveLevel != null">
+                FIELD_SENSITIVE_LEVEL,
+            </if>
+            <if test="fieldFuzzyCode != null">
+                FIELD_FUZZY_CODE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="tableId != null">
+                #{tableId,jdbcType=INTEGER},
+            </if>
+            <if test="tableName != null">
+                #{tableName,jdbcType=VARCHAR},
+            </if>
+            <if test="fieldName != null">
+                #{fieldName,jdbcType=VARCHAR},
+            </if>
+            <if test="fieldSeq != null">
+                #{fieldSeq,jdbcType=INTEGER},
+            </if>
+            <if test="fieldNameCn != null">
+                #{fieldNameCn,jdbcType=VARCHAR},
+            </if>
+            <if test="fieldDataType != null">
+                #{fieldDataType,jdbcType=VARCHAR},
+            </if>
+            <if test="fieldComment != null">
+                #{fieldComment,jdbcType=VARCHAR},
+            </if>
+            <if test="fieldSecurityType != null">
+                #{fieldSecurityType,jdbcType=VARCHAR},
+            </if>
+            <if test="fieldSensitiveLevel != null">
+                #{fieldSensitiveLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="fieldFuzzyCode != null">
+                #{fieldFuzzyCode,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.bamboo.model.beans.TableFieldExample" resultType="java.lang.Long">
+        select count(*) from table_field
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update table_field
+        <set>
+            <if test="record.tableId != null">
+                TABLE_ID = #{record.tableId,jdbcType=INTEGER},
+            </if>
+            <if test="record.tableName != null">
+                TABLE_NAME = #{record.tableName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.fieldName != null">
+                FIELD_NAME = #{record.fieldName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.fieldSeq != null">
+                FIELD_SEQ = #{record.fieldSeq,jdbcType=INTEGER},
+            </if>
+            <if test="record.fieldNameCn != null">
+                FIELD_NAME_CN = #{record.fieldNameCn,jdbcType=VARCHAR},
+            </if>
+            <if test="record.fieldDataType != null">
+                FIELD_DATA_TYPE = #{record.fieldDataType,jdbcType=VARCHAR},
+            </if>
+            <if test="record.fieldComment != null">
+                FIELD_COMMENT = #{record.fieldComment,jdbcType=VARCHAR},
+            </if>
+            <if test="record.fieldSecurityType != null">
+                FIELD_SECURITY_TYPE = #{record.fieldSecurityType,jdbcType=VARCHAR},
+            </if>
+            <if test="record.fieldSensitiveLevel != null">
+                FIELD_SENSITIVE_LEVEL = #{record.fieldSensitiveLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="record.fieldFuzzyCode != null">
+                FIELD_FUZZY_CODE = #{record.fieldFuzzyCode,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update table_field
+        set TABLE_ID = #{record.tableId,jdbcType=INTEGER},
         TABLE_NAME = #{record.tableName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.fieldName != null">
         FIELD_NAME = #{record.fieldName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.fieldSeq != null">
         FIELD_SEQ = #{record.fieldSeq,jdbcType=INTEGER},
-      </if>
-      <if test="record.fieldNameCn != null">
         FIELD_NAME_CN = #{record.fieldNameCn,jdbcType=VARCHAR},
-      </if>
-      <if test="record.fieldDataType != null">
         FIELD_DATA_TYPE = #{record.fieldDataType,jdbcType=VARCHAR},
-      </if>
-      <if test="record.fieldComment != null">
         FIELD_COMMENT = #{record.fieldComment,jdbcType=VARCHAR},
-      </if>
-      <if test="record.fieldSecurityType != null">
         FIELD_SECURITY_TYPE = #{record.fieldSecurityType,jdbcType=VARCHAR},
-      </if>
-      <if test="record.fieldSensitiveLevel != null">
         FIELD_SENSITIVE_LEVEL = #{record.fieldSensitiveLevel,jdbcType=VARCHAR},
-      </if>
-      <if test="record.fieldFuzzyCode != null">
-        FIELD_FUZZY_CODE = #{record.fieldFuzzyCode,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update table_field
-    set TABLE_ID = #{record.tableId,jdbcType=INTEGER},
-      TABLE_NAME = #{record.tableName,jdbcType=VARCHAR},
-      FIELD_NAME = #{record.fieldName,jdbcType=VARCHAR},
-      FIELD_SEQ = #{record.fieldSeq,jdbcType=INTEGER},
-      FIELD_NAME_CN = #{record.fieldNameCn,jdbcType=VARCHAR},
-      FIELD_DATA_TYPE = #{record.fieldDataType,jdbcType=VARCHAR},
-      FIELD_COMMENT = #{record.fieldComment,jdbcType=VARCHAR},
-      FIELD_SECURITY_TYPE = #{record.fieldSecurityType,jdbcType=VARCHAR},
-      FIELD_SENSITIVE_LEVEL = #{record.fieldSensitiveLevel,jdbcType=VARCHAR},
-      FIELD_FUZZY_CODE = #{record.fieldFuzzyCode,jdbcType=VARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.bamboo.model.beans.TableField">
-    update table_field
-    <set>
-      <if test="fieldSeq != null">
-        FIELD_SEQ = #{fieldSeq,jdbcType=INTEGER},
-      </if>
-      <if test="fieldNameCn != null">
+        FIELD_FUZZY_CODE = #{record.fieldFuzzyCode,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause" />
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.bamboo.model.beans.TableField">
+        update table_field
+        <set>
+            <if test="fieldSeq != null">
+                FIELD_SEQ = #{fieldSeq,jdbcType=INTEGER},
+            </if>
+            <if test="fieldNameCn != null">
+                FIELD_NAME_CN = #{fieldNameCn,jdbcType=VARCHAR},
+            </if>
+            <if test="fieldDataType != null">
+                FIELD_DATA_TYPE = #{fieldDataType,jdbcType=VARCHAR},
+            </if>
+            <if test="fieldComment != null">
+                FIELD_COMMENT = #{fieldComment,jdbcType=VARCHAR},
+            </if>
+            <if test="fieldSecurityType != null">
+                FIELD_SECURITY_TYPE = #{fieldSecurityType,jdbcType=VARCHAR},
+            </if>
+            <if test="fieldSensitiveLevel != null">
+                FIELD_SENSITIVE_LEVEL = #{fieldSensitiveLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="fieldFuzzyCode != null">
+                FIELD_FUZZY_CODE = #{fieldFuzzyCode,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where TABLE_ID = #{tableId,jdbcType=INTEGER}
+        and TABLE_NAME = #{tableName,jdbcType=VARCHAR}
+        and FIELD_NAME = #{fieldName,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.bamboo.model.beans.TableField">
+        update table_field
+        set FIELD_SEQ = #{fieldSeq,jdbcType=INTEGER},
         FIELD_NAME_CN = #{fieldNameCn,jdbcType=VARCHAR},
-      </if>
-      <if test="fieldDataType != null">
         FIELD_DATA_TYPE = #{fieldDataType,jdbcType=VARCHAR},
-      </if>
-      <if test="fieldComment != null">
         FIELD_COMMENT = #{fieldComment,jdbcType=VARCHAR},
-      </if>
-      <if test="fieldSecurityType != null">
         FIELD_SECURITY_TYPE = #{fieldSecurityType,jdbcType=VARCHAR},
-      </if>
-      <if test="fieldSensitiveLevel != null">
         FIELD_SENSITIVE_LEVEL = #{fieldSensitiveLevel,jdbcType=VARCHAR},
-      </if>
-      <if test="fieldFuzzyCode != null">
-        FIELD_FUZZY_CODE = #{fieldFuzzyCode,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where TABLE_ID = #{tableId,jdbcType=INTEGER}
-      and TABLE_NAME = #{tableName,jdbcType=VARCHAR}
-      and FIELD_NAME = #{fieldName,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.bamboo.model.beans.TableField">
-    update table_field
-    set FIELD_SEQ = #{fieldSeq,jdbcType=INTEGER},
-      FIELD_NAME_CN = #{fieldNameCn,jdbcType=VARCHAR},
-      FIELD_DATA_TYPE = #{fieldDataType,jdbcType=VARCHAR},
-      FIELD_COMMENT = #{fieldComment,jdbcType=VARCHAR},
-      FIELD_SECURITY_TYPE = #{fieldSecurityType,jdbcType=VARCHAR},
-      FIELD_SENSITIVE_LEVEL = #{fieldSensitiveLevel,jdbcType=VARCHAR},
-      FIELD_FUZZY_CODE = #{fieldFuzzyCode,jdbcType=VARCHAR}
-    where TABLE_ID = #{tableId,jdbcType=INTEGER}
-      and TABLE_NAME = #{tableName,jdbcType=VARCHAR}
-      and FIELD_NAME = #{fieldName,jdbcType=VARCHAR}
-  </update>
+        FIELD_FUZZY_CODE = #{fieldFuzzyCode,jdbcType=VARCHAR}
+        where TABLE_ID = #{tableId,jdbcType=INTEGER}
+        and TABLE_NAME = #{tableName,jdbcType=VARCHAR}
+        and FIELD_NAME = #{fieldName,jdbcType=VARCHAR}
+    </update>
 </mapper>

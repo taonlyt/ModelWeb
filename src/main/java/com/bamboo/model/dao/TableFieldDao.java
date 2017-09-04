@@ -1,5 +1,6 @@
 package com.bamboo.model.dao;
 
+import com.bamboo.model.beans.QTableField;
 import com.bamboo.model.beans.TableField;
 import com.bamboo.model.beans.TableFieldExample;
 import com.bamboo.model.beans.TableFieldKey;
@@ -7,6 +8,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TableFieldDao {
+
     long countByExample(TableFieldExample example);
 
     int deleteByExample(TableFieldExample example);
@@ -18,6 +20,8 @@ public interface TableFieldDao {
     int insertSelective(TableField record);
 
     List<TableField> selectByExample(TableFieldExample example);
+
+    List<TableField> selectByFieldName(QTableField qryParmas);
 
     TableField selectByPrimaryKey(TableFieldKey key);
 

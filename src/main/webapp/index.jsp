@@ -22,7 +22,7 @@
         <script src="bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
         <style>
             /* Remove the navbar's default margin-bottom and rounded borders */ 
-            body{font-size: 10px}
+            body{font-size: 6px}
             .navbar {
                 margin-bottom: 0;
                 border-radius: 0;
@@ -126,7 +126,7 @@
             </div>
         </div>
         <script>
-            $("#contentBody").css("height", screen.height * 0.8);//自适应高度
+            $("#contentBody").css("height", screen.height);//自适应高度
             $("#contentBody").load("model/modelIndex.jsp");
             function queryModel() {
                 $("#contentBody").load("model/modelIndex.jsp");
