@@ -7,6 +7,8 @@ package com.bamboo.model.dto;
 
 import com.bamboo.model.beans.Table;
 import com.bamboo.model.beans.TableField;
+import com.bamboo.model.beans.TableKindAttr;
+import java.util.List;
 
 /**
  *
@@ -15,7 +17,8 @@ import com.bamboo.model.beans.TableField;
 public class TableDTO {
 
     private Table table;
-    private TableField tableFields;
+    private List<TableKindAttr> kindAttrs;
+    private List<TableField> tableFields;
 
     public Table getTable() {
         return table;
@@ -25,12 +28,21 @@ public class TableDTO {
         this.table = table;
     }
 
-    public TableField getTableFields() {
+    public List<TableKindAttr> getKindAttrs() {
+        return kindAttrs;
+    }
+
+    public void setKindAttrs(List<TableKindAttr> kindAttrs) {
+        this.kindAttrs = kindAttrs;
+    }
+
+    public List<TableField> getTableFields() {
         return tableFields;
     }
 
-    public void setTableFields(TableField tableFields) {
+    public void setTableFields(List<TableField> tableFields) {
         this.tableFields = tableFields;
     }
+    
     
 }

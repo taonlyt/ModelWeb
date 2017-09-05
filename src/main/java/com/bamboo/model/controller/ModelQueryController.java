@@ -5,7 +5,7 @@
  */
 package com.bamboo.model.controller;
 
-import com.bamboo.model.beans.QTableField;
+import com.bamboo.model.dto.QTableField;
 import com.bamboo.model.beans.TableField;
 import com.bamboo.model.beans.TableFieldExample;
 import com.bamboo.model.beans.TableFieldExample.Criteria;

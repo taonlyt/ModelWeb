@@ -22,7 +22,7 @@
         <script src="bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
         <style>
             /* Remove the navbar's default margin-bottom and rounded borders */ 
-            body{font-size: 6px}
+            body{font-size: 5px;font-weight: lighter}
             .navbar {
                 margin-bottom: 0;
                 border-radius: 0;
