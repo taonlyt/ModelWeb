@@ -70,9 +70,10 @@ public class ModelQueryController {
         queryParams.setLimit(Integer.parseInt(limit));
         queryParams.setOffset(Integer.parseInt(offset));
         TableList tablelist = new TableList();
+        long total = tableFieldDao.countByQTableField(queryParams);
         List<TableField> tableFields = tableFieldDao.selectByFieldName(queryParams);
         tablelist.setRows(tableFields);
-        tablelist.setTotal(tableFields.size());
+        tablelist.setTotal(Integer.parseInt(String.valueOf(total)));
         return tablelist;
     }
 }

@@ -75,7 +75,20 @@
         TABLE_ID, TABLE_NAME, FIELD_NAME, FIELD_SEQ, FIELD_NAME_CN, FIELD_DATA_TYPE, FIELD_COMMENT, 
         FIELD_SECURITY_TYPE, FIELD_SENSITIVE_LEVEL, FIELD_FUZZY_CODE
     </sql>
-    <select id="selectByFieldName" parameterType="com.bamboo.model.beans.QTableField" resultMap="BaseResultMap">
+    <select id="countByQTableField" parameterType="com.bamboo.model.dto.QTableField" resultType="java.lang.Long">
+        select count(1) from table_field WHERE 1=1 
+        <if test="fieldName != null">
+           AND FIELD_NAME LIKE  concat('%',#{fieldName},'%') 
+        </if>
+        <if test="fieldNameCn != null">
+           AND FIELD_NAME_CN LIKE  concat('%',#{fieldNameCn},'%') 
+        </if>
+        <if test="tableName != null">
+           AND TABLE_NAME LIKE  concat('%',#{tableName},'%') 
+        </if>
+        order by FIELD_SEQ asc 
+    </select>
+    <select id="selectByFieldName" parameterType="com.bamboo.model.dto.QTableField" resultMap="BaseResultMap">
         select
        
         <include refid="Base_Column_List" />
@@ -98,7 +111,6 @@
                 limit ${limit}
             </if>
         </if>
-         
     </select>
     <select id="selectByExample" parameterType="com.bamboo.model.beans.TableFieldExample" resultMap="BaseResultMap">
         select

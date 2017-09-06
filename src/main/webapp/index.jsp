@@ -22,13 +22,15 @@
         <script src="bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
         <style>
             /* Remove the navbar's default margin-bottom and rounded borders */ 
-            body{font-size: 5px;font-weight: lighter}
             .navbar {
                 margin-bottom: 0;
                 border-radius: 0;
             }
             .left-zero{
                 padding-left: 0;
+            }
+            .contentRight{
+                top: 30px;
             }
             .right-zero{
                 padding-right: 0;
@@ -76,10 +78,10 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">首页</a></li>
-                        <li class="active"><a href="#">关于我们</a></li>
-                        <li><a href="javascript:getMenuData()">项目</a></li>
-                        <li><a href="#">联系我们</a></li>
+                        <li><a href="#">模型查询</a></li>
+                        <li class="active"><a href="#">模型操作</a></li>
+                        <li><a href="javascript:getMenuData()">模型导出</a></li>
+                        <li><a href="#">模型导入</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
@@ -90,25 +92,22 @@
         <!--页面主体-->
         <div class="container-fluid text-center">   
             <p></p>
-            <form role="form" class="form-inline">
+            <form role="form" class="form-inline text-left">
                 <div class="form-group">
-                    <label for="lb_modelName">模型名（英文）:</label>
-                    <input type="text" class="form-control" id="modelName">
+                     <label for="lb_fieldName">查询条件：</label>
+                    <input type="text" class="form-control" placeholder="模型英文名" id="modelName">
                 </div>
                 <div class="form-group">
-                    <label for="lb_modelNameZh">模型名（中文）:</label>
-                    <input type="text" class="form-control" id="modelNameZh">
+                    <input type="text" class="form-control"  placeholder="模型中文名" id="modelNameZh">
                 </div>
                 <div class="form-group">
-                    <label for="lb_fieldName">字段名（英文）:</label>
-                    <input type="text" class="form-control" id="fieldName">
+                    <input type="text" class="form-control"  placeholder="字段英文名"  id="fieldName">
                 </div>
                 <div class="form-group">
-                    <label for="lb_fieldNameZh">字段名（中文）:</label>
-                    <input type="text" class="form-control" id="fieldNameZh">
+                    <input type="text" class="form-control" placeholder="字段中文名" id="fieldNameZh">
                 </div>
-                <button type="button" class="btn btn-primary" onclick="queryModel()">查询</button>
-                <button type="button" class="btn btn-primary" onclick="resetQuery()">重置</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="queryModel()">查询</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="resetQuery()">重置</button>
             </form>
             <div class="row content">
                 <!--左侧菜单-->
@@ -117,6 +116,8 @@
 
                 </div>
                 <!--右侧广告位-->
+<!--                <div class="col-sm-2 text-left left-zero contentRight" id="contentRight"> 
+                </div>-->
                 <!--页面底部-->
                 <div class="container-fluid" id="footer">
                     <p>

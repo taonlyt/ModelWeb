@@ -24,22 +24,26 @@
             <li><a data-toggle="tab" href="#home">模型基本信息</a></li>
             <li class="active"><a data-toggle="tab" href="#menu1">模型字段信息</a></li>
         </ul>
-        <div class="container-fluid left-sm div-border">
-            <table id="tablelist" class="table">
-
-            </table>
-            <div class="panel panel-default">
-                <div class="panel-heading">字段注释</div>
-                <div id="fieldComment" class="panel-body"></div>
+        <div class="container-fluid left-sm">
+            <div class="container-fluid col-sm-10">
+                <table id="tablelist" class="table">
+                    
+                </table>
+            </div>
+            <div class="container-fluid col-sm-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">字段注释</div>
+                    <div id="fieldComment" class="panel-body"></div>
+                </div>
             </div>
         </div>
         <div id="toolbar" class="btn-group">
             <button id="btn_add" type="button" class="btn btn-default">
                 <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>&nbsp;查看建表语句
             </button>
-<!--            <button id="btn_add" type="button" class="btn btn-primary">
-                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>查看建表语句
-            </button>-->
+            <!--            <button id="btn_add" type="button" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>查看建表语句
+                        </button>-->
             <!--
             <button id="btn_delete" type="button" class="btn btn-warning">
                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除

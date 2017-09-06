@@ -11,6 +11,8 @@ public interface TableFieldDao {
 
     long countByExample(TableFieldExample example);
 
+    long countByQTableField(QTableField qryParmas);
+
     int deleteByExample(TableFieldExample example);
 
     int deleteByPrimaryKey(TableFieldKey key);

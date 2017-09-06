@@ -13,6 +13,9 @@ import java.util.List;
  */
 public class TableList {
 
+    /**
+     * 总记录数
+     */
     private int total;
     /**
      * 当前页记录
