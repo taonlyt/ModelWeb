@@ -68,7 +68,7 @@
                         </foreach>
                     </trim>
                 </if>
-            </foreach>
+            </foreach> 
         </where>
     </sql>
     <sql id="Base_Column_List">
