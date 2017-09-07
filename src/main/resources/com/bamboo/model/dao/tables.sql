@@ -1,13 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- * Author:  luotao
- * Created: 2017-9-5
- */
-
 CREATE TABLE `table_attr` (
   `TABLE_ID` int(11) NOT NULL,
   `ATTR_ID` varchar(45) NOT NULL,
@@ -36,6 +26,9 @@ CREATE TABLE `table_field` (
   `FIELD_SECURITY_TYPE` varchar(2) DEFAULT NULL COMMENT '安全分类',
   `FIELD_SENSITIVE_LEVEL` varchar(45) DEFAULT NULL COMMENT '安全等级',
   `FIELD_FUZZY_CODE` varchar(45) DEFAULT NULL COMMENT '字段值模糊化编码，即脱敏ID。',
+  `NULLABLE` varchar(1) NOT NULL COMMENT 'Y：可空\nN：不可空',
+  `IS_PRIMARY_KEY` varchar(1) DEFAULT NULL COMMENT '1：是\n0：否',
+  `PARTITIONING_KEY_SEQ` int(11) DEFAULT NULL COMMENT '分区键序号',
   PRIMARY KEY (`TABLE_ID`,`TABLE_NAME`,`FIELD_NAME`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -45,4 +38,24 @@ CREATE TABLE `table_kind_attr` (
   `ATTR_NAME` varchar(45) NOT NULL,
   `ATTR_VALUE` varchar(45) DEFAULT NULL COMMENT '数据库类型属性默认值',
   PRIMARY KEY (`DB_TYPE`,`ATTR_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `table_upgrade_detail` (
+  `UPGRADE_ID` int(11) NOT NULL,
+  `TABLE_NAME` varchar(128) DEFAULT NULL COMMENT '表名',
+  `OPR_TYPE` varchar(4) DEFAULT NULL COMMENT '操作类型',
+  `OPR_CONTENT` varchar(256) DEFAULT NULL COMMENT '操作类型',
+  `IS_OPR_MAIN_TABLE` varchar(1) DEFAULT NULL COMMENT '是否操作主表',
+  `IS_OPR_SUB_TABLE` varchar(1) DEFAULT NULL COMMENT '是否操作子表',
+  `UPGRADE_COMMENT` varchar(512) DEFAULT NULL COMMENT '升级说明',
+  PRIMARY KEY (`UPGRADE_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `table_upgrade_form` (
+  `UPGRADE_ID` int(11) NOT NULL COMMENT '升级唯一标识',
+  `REQ_CODE` varchar(64) NOT NULL COMMENT '需求编号',
+  `REQ_NAME` varchar(256) NOT NULL COMMENT '需求名称',
+  `REQ_TYPE` varchar(16) DEFAULT NULL COMMENT '需求类型',
+  `UPGRADE_PKG_FILE` varchar(128) DEFAULT NULL COMMENT '升级包路径',
+  PRIMARY KEY (`UPGRADE_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
