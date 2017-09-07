@@ -79,11 +79,11 @@ var TableInit = function () {
                     field: 'fieldFuzzyCode',
                     title: '脱敏ID'
                 }],
-            onClickRow:function(row){
-                 $("#fieldComment").html('');
-                 $("#fieldComment").append(row.fieldComment);
+            onClickRow: function (row) {
+                $("#fieldComment").html('');
+                $("#fieldComment").append(row.fieldComment);
             },
-            onDblClickRow:function(row){
+            onDblClickRow: function (row) {
                 //$("#tableInfo").modal();
             }
         });

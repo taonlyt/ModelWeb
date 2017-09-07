@@ -78,10 +78,10 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">模型查询</a></li>
-                        <li class="active"><a href="#">模型操作</a></li>
-                        <li><a href="javascript:getMenuData()">模型导出</a></li>
+                        <li class="active"><a href="javascript:loadPage('model/modelQuery.jsp')">模型查询</a></li>
                         <li><a href="#">模型导入</a></li>
+                        <li><a href="#">模型导出</a></li>
+                        <li><a href="javascript:loadPage('model/modelUpgrade.jsp')">模型升级</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
@@ -91,24 +91,6 @@
         </nav>
         <!--页面主体-->
         <div class="container-fluid text-center">   
-            <p></p>
-            <form role="form" class="form-inline text-left">
-                <div class="form-group">
-                     <label for="lb_fieldName">查询条件：</label>
-                    <input type="text" class="form-control" placeholder="模型英文名" id="modelName">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control"  placeholder="模型中文名" id="modelNameZh">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control"  placeholder="字段英文名"  id="fieldName">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="字段中文名" id="fieldNameZh">
-                </div>
-                <button type="button" class="btn btn-primary btn-sm" onclick="queryModel()">查询</button>
-                <button type="button" class="btn btn-primary btn-sm" onclick="resetQuery()">重置</button>
-            </form>
             <div class="row content">
                 <!--左侧菜单-->
                 <!--中间内容-->
@@ -128,15 +110,9 @@
         </div>
         <script>
             $("#contentBody").css("height", screen.height);//自适应高度
-            $("#contentBody").load("model/modelIndex.jsp");
-            function queryModel() {
-                $("#contentBody").load("model/modelIndex.jsp");
-            }
-            function resetQuery() {
-                $("#modelName").val('');
-                $("#modelNameZh").val('');
-                $("#fieldName").val('');
-                $("#fieldNameZh").val('');
+            $("#contentBody").load("model/modelQuery.jsp");
+            function loadPage(pageUrl){
+                $("#contentBody").load(pageUrl);
             }
         </script>
     </body>

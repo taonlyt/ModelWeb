@@ -1,5 +1,5 @@
 <%-- 
-    Document   : modelIndex
+    Document   : modelQueryList
     Created on : 2017-9-1, 14:48:11
     Author     : luotao
 --%>
@@ -11,23 +11,23 @@
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="model/js/tablelist.js"></script>
+        <script src="model/js/table.field.js"></script>
         <script>
-            function showComment(comment_value) {
-
-            }
+            $(document).ready(function () {
+                $('[data-toggle="popover"]').popover();
+            });
         </script>
     </head>
     <body>
-        <p></p>
-        <ul class="nav nav-tabs">
-            <li><a data-toggle="tab" href="#home">模型基本信息</a></li>
-            <li class="active"><a data-toggle="tab" href="#menu1">模型字段信息</a></li>
-        </ul>
+        <!--        <p></p>
+                <ul class="nav nav-tabs">
+                    <li><a data-toggle="tab" href="#home">模型基本信息</a></li>
+                    <li class="active"><a data-toggle="tab" href="#menu1">模型字段信息</a></li>
+                </ul>-->
         <div class="container-fluid left-sm">
             <div class="container-fluid col-sm-10">
-                <table id="tablelist" class="table">
-                    
+                <table id="tablelist" class="table table-condensed">
+
                 </table>
             </div>
             <div class="container-fluid col-sm-2">
@@ -38,7 +38,7 @@
             </div>
         </div>
         <div id="toolbar" class="btn-group">
-            <button id="btn_add" type="button" class="btn btn-default">
+            <button id="btn_add" type="button" class="btn btn-primary">
                 <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>&nbsp;查看建表语句
             </button>
             <!--            <button id="btn_add" type="button" class="btn btn-primary">

@@ -11,6 +11,7 @@ import com.bamboo.model.beans.TableFieldExample;
 import com.bamboo.model.beans.TableFieldExample.Criteria;
 import com.bamboo.model.dao.TableFieldDao;
 import com.bamboo.model.dto.TableList;
+import com.bamboo.model.util.StringUtil;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -44,10 +45,10 @@ public class ModelQueryController {
         TableFieldExample example = new TableFieldExample();
         Criteria criteria = example.createCriteria();
         if (tableName != null && tableName.trim().length() > 0) {
-            criteria.andTableNameLike("concat('%'," + tableName + ",'%')");
+            criteria.andTableNameLike("concat('%','" + tableName + "','%')");
         }
         if (fieldName != null && fieldName.trim().length() > 0) {
-            criteria.andFieldNameLike("concat('%'," + fieldName + ",'%')");
+            criteria.andFieldNameLike("'%"+fieldName + "%')");
         }
         if (fieldNameZh != null && fieldNameZh.trim().length() > 0) {
 
@@ -58,15 +59,9 @@ public class ModelQueryController {
 
         QTableField queryParams = new QTableField();
 
-        if (fieldName != null && fieldName.trim().length() > 0) {
-            queryParams.setFieldName(fieldName);
-        }
-        if (fieldNameZh != null && fieldNameZh.trim().length() > 0) {
-            queryParams.setFieldNameCn(fieldNameZh);
-        }
-        if (tableName != null && tableName.trim().length() > 0) {
-            queryParams.setTableName(tableName);
-        }
+        queryParams.setFieldName(StringUtil.trim(fieldName));
+        queryParams.setFieldNameCn(StringUtil.trim(fieldNameZh));
+        queryParams.setTableName(StringUtil.trim(tableName));
         queryParams.setLimit(Integer.parseInt(limit));
         queryParams.setOffset(Integer.parseInt(offset));
         TableList tablelist = new TableList();
