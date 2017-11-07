@@ -5,11 +5,13 @@
  */
 package com.bamboo.model.controller;
 
+import com.bamboo.model.dto.QTableField;
 import com.bamboo.model.beans.TableField;
 import com.bamboo.model.beans.TableFieldExample;
 import com.bamboo.model.beans.TableFieldExample.Criteria;
 import com.bamboo.model.dao.TableFieldDao;
 import com.bamboo.model.dto.TableList;
+import com.bamboo.model.util.StringUtil;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -43,21 +45,30 @@ public class ModelQueryController {
         TableFieldExample example = new TableFieldExample();
         Criteria criteria = example.createCriteria();
         if (tableName != null && tableName.trim().length() > 0) {
-            criteria.andTableNameLike("CONCAT(CONCAT('%','"+tableName+"'),'%')");
+            criteria.andTableNameLike("concat('%','" + tableName + "','%')");
         }
         if (fieldName != null && fieldName.trim().length() > 0) {
-            criteria.andFieldNameLike("CONCAT(CONCAT('%','"+fieldName+"'),'%')");
+            criteria.andFieldNameLike("'%"+fieldName + "%')");
         }
         if (fieldNameZh != null && fieldNameZh.trim().length() > 0) {
 
-            criteria.andFieldNameCnLike("CONCAT(CONCAT('%','"+fieldNameZh+"'),'%')");
+            criteria.andFieldNameCnLike("concat('%'," + fieldNameZh + ",'%')");
         }
         example.setLimit(Integer.parseInt(limit));
         example.setOffset(Integer.parseInt(offset));
+
+        QTableField queryParams = new QTableField();
+
+        queryParams.setFieldName(StringUtil.trim(fieldName));
+        queryParams.setFieldNameCn(StringUtil.trim(fieldNameZh));
+        queryParams.setTableName(StringUtil.trim(tableName));
+        queryParams.setLimit(Integer.parseInt(limit));
+        queryParams.setOffset(Integer.parseInt(offset));
         TableList tablelist = new TableList();
-        List<TableField> tableFields = tableFieldDao.selectByExample(example);
+        long total = tableFieldDao.countByQTableField(queryParams);
+        List<TableField> tableFields = tableFieldDao.selectByFieldName(queryParams);
         tablelist.setRows(tableFields);
-        tablelist.setTotal(tableFields.size());
+        tablelist.setTotal(Integer.parseInt(String.valueOf(total)));
         return tablelist;
     }
 }

@@ -22,13 +22,15 @@
         <script src="bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
         <style>
             /* Remove the navbar's default margin-bottom and rounded borders */ 
-            body{font-size: 10px}
             .navbar {
                 margin-bottom: 0;
                 border-radius: 0;
             }
             .left-zero{
                 padding-left: 0;
+            }
+            .contentRight{
+                top: 30px;
             }
             .right-zero{
                 padding-right: 0;
@@ -76,10 +78,10 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">首页</a></li>
-                        <li class="active"><a href="#">关于我们</a></li>
-                        <li><a href="javascript:getMenuData()">项目</a></li>
-                        <li><a href="#">联系我们</a></li>
+                        <li class="active"><a href="javascript:loadPage('model/modelQuery.jsp')">模型查询</a></li>
+                        <li><a href="#">模型导入</a></li>
+                        <li><a href="#">模型导出</a></li>
+                        <li><a href="javascript:loadPage('model/modelUpgrade.jsp')">模型升级</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
@@ -89,27 +91,6 @@
         </nav>
         <!--页面主体-->
         <div class="container-fluid text-center">   
-            <p></p>
-            <form role="form" class="form-inline">
-                <div class="form-group">
-                    <label for="lb_modelName">模型名（英文）:</label>
-                    <input type="text" class="form-control" id="modelName">
-                </div>
-                <div class="form-group">
-                    <label for="lb_modelNameZh">模型名（中文）:</label>
-                    <input type="text" class="form-control" id="modelNameZh">
-                </div>
-                <div class="form-group">
-                    <label for="lb_fieldName">字段名（英文）:</label>
-                    <input type="text" class="form-control" id="fieldName">
-                </div>
-                <div class="form-group">
-                    <label for="lb_fieldNameZh">字段名（中文）:</label>
-                    <input type="text" class="form-control" id="fieldNameZh">
-                </div>
-                <button type="button" class="btn btn-primary" onclick="queryModel()">查询</button>
-                <button type="button" class="btn btn-primary" onclick="resetQuery()">重置</button>
-            </form>
             <div class="row content">
                 <!--左侧菜单-->
                 <!--中间内容-->
@@ -117,6 +98,8 @@
 
                 </div>
                 <!--右侧广告位-->
+<!--                <div class="col-sm-2 text-left left-zero contentRight" id="contentRight"> 
+                </div>-->
                 <!--页面底部-->
                 <div class="container-fluid" id="footer">
                     <p>
@@ -126,16 +109,10 @@
             </div>
         </div>
         <script>
-            $("#contentBody").css("height", screen.height * 0.8);//自适应高度
-            $("#contentBody").load("model/modelIndex.jsp");
-            function queryModel() {
-                $("#contentBody").load("model/modelIndex.jsp");
-            }
-            function resetQuery() {
-                $("#modelName").val('');
-                $("#modelNameZh").val('');
-                $("#fieldName").val('');
-                $("#fieldNameZh").val('');
+            $("#contentBody").css("height", screen.height);//自适应高度
+            $("#contentBody").load("model/modelQuery.jsp");
+            function loadPage(pageUrl){
+                $("#contentBody").load(pageUrl);
             }
         </script>
     </body>
