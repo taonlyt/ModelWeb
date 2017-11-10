@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.bamboo.model.dto;
+package com.bamboo.common.beans;
 
 import java.util.List;
 

@@ -9,7 +9,7 @@ import com.bamboo.model.beans.TableField;
 import com.bamboo.model.beans.TableUpgradeForm;
 import com.bamboo.model.dao.TableUpgradeFormDao;
 import com.bamboo.model.dto.QTableUpgradeForm;
-import com.bamboo.model.dto.TableList;
+import com.bamboo.common.beans.TableList;
 import com.bamboo.model.util.StringUtil;
 import java.util.List;
 import javax.annotation.Resource;

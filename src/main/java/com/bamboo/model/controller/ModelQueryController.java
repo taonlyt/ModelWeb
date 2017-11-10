@@ -10,7 +10,7 @@ import com.bamboo.model.beans.TableField;
 import com.bamboo.model.beans.TableFieldExample;
 import com.bamboo.model.beans.TableFieldExample.Criteria;
 import com.bamboo.model.dao.TableFieldDao;
-import com.bamboo.model.dto.TableList;
+import com.bamboo.common.beans.TableList;
 import com.bamboo.model.util.StringUtil;
 import java.util.List;
 import javax.annotation.Resource;

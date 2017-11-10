@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="zh">
     <head>
-        <title>模型管理</title>
+        <title>萌萌哒</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--jquery-->
@@ -18,8 +18,11 @@
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <!--bootstap table-->
         <link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css">
+        <link rel="stylesheet" href="bootstrap/css/bootstrap-datetimepicker.min.css">
         <script src="bootstrap/js/bootstrap-table.min.js"></script>
         <script src="bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+        <script src="bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+        <script src="bootstrap/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
         <style>
             /* Remove the navbar's default margin-bottom and rounded borders */ 
             .navbar {
@@ -74,15 +77,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>                        
                     </button>
-                    <a class="navbar-brand" href="#"><font style=" font-weight: 900; color: #0078ae">模型管理</font></a>
+                    <a class="navbar-brand" href="#"><font style=" font-weight: 900; color: #0078ae">萌萌哒童装店</font></a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="javascript:loadPage('model/modelQuery.jsp')">模型查询</a></li>
-                        <li><a href="#">模型导入</a></li>
-                        <li><a href="javascript:loadPage('order/order_index.jsp')">模型导出</a></li>
-                        <li><a href="javascript:loadPage('model/modelUpgrade.jsp')">模型升级</a></li>
-                        <li><a href="javascript:loadPage('model/modelUpgradeDetail.jsp')">升级明细</a></li>
+                        <li class="active"><a href="javascript:loadPage('order/order_index.jsp')">订单管理</a></li>
+                        <li><a href="javascript:loadPage('order/order_index.jsp')">客户管理</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
@@ -111,7 +111,7 @@
         </div>
         <script>
             $("#contentBody").css("height", screen.height);//自适应高度
-            $("#contentBody").load("model/modelQuery.jsp");
+            $("#contentBody").load("order/order_index.jsp");
             function loadPage(pageUrl){
                 $("#contentBody").load(pageUrl);
             }

@@ -59,7 +59,7 @@
     
     <!-- 自动扫描所有的Mapper接口与文件 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.bamboo.model.**.dao"></property>
+        <property name="basePackage" value="com.bamboo.**.dao"></property>
     </bean>
     
     <!-- 配置事务管理器 -->
