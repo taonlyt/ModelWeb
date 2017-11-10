@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bamboo.order.dao.OrderDao">
+  <resultMap id="BaseResultMap" type="com.bamboo.order.beans.Order">
+    <id column="ORDER_ID" jdbcType="VARCHAR" property="orderId" />
+    <result column="CUST_ID" jdbcType="VARCHAR" property="custId" />
+    <result column="ORIGINAL_MONEY" jdbcType="DECIMAL" property="originalMoney" />
+    <result column="DISCOUNT_MONEY" jdbcType="DECIMAL" property="discountMoney" />
+    <result column="PAYED_MONEY" jdbcType="DECIMAL" property="payedMoney" />
+    <result column="DISCOUNT_TYPE" jdbcType="INTEGER" property="discountType" />
+    <result column="ORDER_STATUS" jdbcType="SMALLINT" property="orderStatus" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ORDER_ID, CUST_ID, ORIGINAL_MONEY, DISCOUNT_MONEY, PAYED_MONEY, DISCOUNT_TYPE, ORDER_STATUS, 
+    CREATE_DATE
+  </sql>
+  <select id="selectByExample" parameterType="com.bamboo.order.beans.OrderExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_ab_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_ab_order
+    where ORDER_ID = #{orderId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_ab_order
+    where ORDER_ID = #{orderId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.bamboo.order.beans.OrderExample">
+    delete from t_ab_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.bamboo.order.beans.Order">
+    insert into t_ab_order (ORDER_ID, CUST_ID, ORIGINAL_MONEY, 
+      DISCOUNT_MONEY, PAYED_MONEY, DISCOUNT_TYPE, 
+      ORDER_STATUS, CREATE_DATE)
+    values (#{orderId,jdbcType=VARCHAR}, #{custId,jdbcType=VARCHAR}, #{originalMoney,jdbcType=DECIMAL}, 
+      #{discountMoney,jdbcType=DECIMAL}, #{payedMoney,jdbcType=DECIMAL}, #{discountType,jdbcType=INTEGER}, 
+      #{orderStatus,jdbcType=SMALLINT}, #{createDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bamboo.order.beans.Order">
+    insert into t_ab_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        ORDER_ID,
+      </if>
+      <if test="custId != null">
+        CUST_ID,
+      </if>
+      <if test="originalMoney != null">
+        ORIGINAL_MONEY,
+      </if>
+      <if test="discountMoney != null">
+        DISCOUNT_MONEY,
+      </if>
+      <if test="payedMoney != null">
+        PAYED_MONEY,
+      </if>
+      <if test="discountType != null">
+        DISCOUNT_TYPE,
+      </if>
+      <if test="orderStatus != null">
+        ORDER_STATUS,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="custId != null">
+        #{custId,jdbcType=VARCHAR},
+      </if>
+      <if test="originalMoney != null">
+        #{originalMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="discountMoney != null">
+        #{discountMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payedMoney != null">
+        #{payedMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="discountType != null">
+        #{discountType,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.bamboo.order.beans.OrderExample" resultType="java.lang.Long">
+    select count(*) from t_ab_order
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_ab_order
+    <set>
+      <if test="record.orderId != null">
+        ORDER_ID = #{record.orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.custId != null">
+        CUST_ID = #{record.custId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.originalMoney != null">
+        ORIGINAL_MONEY = #{record.originalMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.discountMoney != null">
+        DISCOUNT_MONEY = #{record.discountMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.payedMoney != null">
+        PAYED_MONEY = #{record.payedMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.discountType != null">
+        DISCOUNT_TYPE = #{record.discountType,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderStatus != null">
+        ORDER_STATUS = #{record.orderStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="record.createDate != null">
+        CREATE_DATE = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_ab_order
+    set ORDER_ID = #{record.orderId,jdbcType=VARCHAR},
+      CUST_ID = #{record.custId,jdbcType=VARCHAR},
+      ORIGINAL_MONEY = #{record.originalMoney,jdbcType=DECIMAL},
+      DISCOUNT_MONEY = #{record.discountMoney,jdbcType=DECIMAL},
+      PAYED_MONEY = #{record.payedMoney,jdbcType=DECIMAL},
+      DISCOUNT_TYPE = #{record.discountType,jdbcType=INTEGER},
+      ORDER_STATUS = #{record.orderStatus,jdbcType=SMALLINT},
+      CREATE_DATE = #{record.createDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bamboo.order.beans.Order">
+    update t_ab_order
+    <set>
+      <if test="custId != null">
+        CUST_ID = #{custId,jdbcType=VARCHAR},
+      </if>
+      <if test="originalMoney != null">
+        ORIGINAL_MONEY = #{originalMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="discountMoney != null">
+        DISCOUNT_MONEY = #{discountMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="payedMoney != null">
+        PAYED_MONEY = #{payedMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="discountType != null">
+        DISCOUNT_TYPE = #{discountType,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null">
+        ORDER_STATUS = #{orderStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ORDER_ID = #{orderId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bamboo.order.beans.Order">
+    update t_ab_order
+    set CUST_ID = #{custId,jdbcType=VARCHAR},
+      ORIGINAL_MONEY = #{originalMoney,jdbcType=DECIMAL},
+      DISCOUNT_MONEY = #{discountMoney,jdbcType=DECIMAL},
+      PAYED_MONEY = #{payedMoney,jdbcType=DECIMAL},
+      DISCOUNT_TYPE = #{discountType,jdbcType=INTEGER},
+      ORDER_STATUS = #{orderStatus,jdbcType=SMALLINT},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP}
+    where ORDER_ID = #{orderId,jdbcType=VARCHAR}
+  </update>
+</mapper>

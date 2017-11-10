@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bamboo.cust.dao.CustomerDao">
+  <resultMap id="BaseResultMap" type="com.bamboo.cust.beans.Customer">
+    <id column="CUST_ID" jdbcType="VARCHAR" property="custId" />
+    <result column="CUST_NAME" jdbcType="VARCHAR" property="custName" />
+    <result column="CELL_PHONE_NBR" jdbcType="VARCHAR" property="cellPhoneNbr" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="CUST_LEVEL" jdbcType="INTEGER" property="custLevel" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    CUST_ID, CUST_NAME, CELL_PHONE_NBR, CREATE_DATE, CUST_LEVEL
+  </sql>
+  <select id="selectByExample" parameterType="com.bamboo.cust.beans.CustomerExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_aa_customer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_aa_customer
+    where CUST_ID = #{custId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_aa_customer
+    where CUST_ID = #{custId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.bamboo.cust.beans.CustomerExample">
+    delete from t_aa_customer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.bamboo.cust.beans.Customer">
+    insert into t_aa_customer (CUST_ID, CUST_NAME, CELL_PHONE_NBR, 
+      CREATE_DATE, CUST_LEVEL)
+    values (#{custId,jdbcType=VARCHAR}, #{custName,jdbcType=VARCHAR}, #{cellPhoneNbr,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{custLevel,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bamboo.cust.beans.Customer">
+    insert into t_aa_customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="custId != null">
+        CUST_ID,
+      </if>
+      <if test="custName != null">
+        CUST_NAME,
+      </if>
+      <if test="cellPhoneNbr != null">
+        CELL_PHONE_NBR,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="custLevel != null">
+        CUST_LEVEL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="custId != null">
+        #{custId,jdbcType=VARCHAR},
+      </if>
+      <if test="custName != null">
+        #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="cellPhoneNbr != null">
+        #{cellPhoneNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="custLevel != null">
+        #{custLevel,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.bamboo.cust.beans.CustomerExample" resultType="java.lang.Long">
+    select count(*) from t_aa_customer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_aa_customer
+    <set>
+      <if test="record.custId != null">
+        CUST_ID = #{record.custId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.custName != null">
+        CUST_NAME = #{record.custName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cellPhoneNbr != null">
+        CELL_PHONE_NBR = #{record.cellPhoneNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createDate != null">
+        CREATE_DATE = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.custLevel != null">
+        CUST_LEVEL = #{record.custLevel,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_aa_customer
+    set CUST_ID = #{record.custId,jdbcType=VARCHAR},
+      CUST_NAME = #{record.custName,jdbcType=VARCHAR},
+      CELL_PHONE_NBR = #{record.cellPhoneNbr,jdbcType=VARCHAR},
+      CREATE_DATE = #{record.createDate,jdbcType=TIMESTAMP},
+      CUST_LEVEL = #{record.custLevel,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bamboo.cust.beans.Customer">
+    update t_aa_customer
+    <set>
+      <if test="custName != null">
+        CUST_NAME = #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="cellPhoneNbr != null">
+        CELL_PHONE_NBR = #{cellPhoneNbr,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="custLevel != null">
+        CUST_LEVEL = #{custLevel,jdbcType=INTEGER},
+      </if>
+    </set>
+    where CUST_ID = #{custId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bamboo.cust.beans.Customer">
+    update t_aa_customer
+    set CUST_NAME = #{custName,jdbcType=VARCHAR},
+      CELL_PHONE_NBR = #{cellPhoneNbr,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      CUST_LEVEL = #{custLevel,jdbcType=INTEGER}
+    where CUST_ID = #{custId,jdbcType=VARCHAR}
+  </update>
+</mapper>

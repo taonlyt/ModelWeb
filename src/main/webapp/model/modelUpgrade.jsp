@@ -17,6 +17,7 @@
             function resetQuery() {
                 $("#reqCode").val('');
                 $("#reqName").val('');
+                var a ={};
             }
         </script>
     </head>
