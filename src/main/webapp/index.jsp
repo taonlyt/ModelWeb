@@ -80,8 +80,9 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="javascript:loadPage('model/modelQuery.jsp')">模型查询</a></li>
                         <li><a href="#">模型导入</a></li>
-                        <li><a href="#">模型导出</a></li>
+                        <li><a href="javascript:loadPage('order/order_index.jsp')">模型导出</a></li>
                         <li><a href="javascript:loadPage('model/modelUpgrade.jsp')">模型升级</a></li>
+                        <li><a href="javascript:loadPage('model/modelUpgradeDetail.jsp')">升级明细</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>

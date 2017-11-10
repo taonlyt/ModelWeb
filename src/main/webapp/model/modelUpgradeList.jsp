@@ -24,7 +24,7 @@
             <button id="btn_add" type="button" class="btn btn-primary" onclick="add()">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
             </button>
-            <button id="btn_add" type="button" class="btn btn-primary">
+            <button id="btn_add" type="button" class="btn btn-success">
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
             </button>
 
@@ -76,10 +76,6 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
-                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h5 class="modal-title">升级明细</h5>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">保存</button>
