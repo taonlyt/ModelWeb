@@ -81,8 +81,8 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="javascript:loadPage('order/order_index.jsp')">订单管理</a></li>
-                        <li><a href="javascript:loadPage('order/order_index.jsp')">客户管理</a></li>
+                        <li class="active"><a href="javascript:loadPage('order/order_index.jsp')">订单查询</a></li>
+                        <li><a href="javascript:loadPage('order/order_add_index.jsp')">创建订单</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>

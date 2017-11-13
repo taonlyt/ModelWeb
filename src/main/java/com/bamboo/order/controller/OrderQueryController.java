@@ -39,7 +39,7 @@ public class OrderQueryController {
         if (cellPhoneNbr != null && cellPhoneNbr.trim().length() > 0) {
             queryParam.setCellPhoneNbr(cellPhoneNbr.trim());
         }
-        if (cellPhoneNbr != null && cellPhoneNbr.trim().length() > 0) {
+        if (orderId != null && orderId.trim().length() > 0) {
             queryParam.setOrderId(orderId.trim());
         }
         TableList tableList  = orderService.queryOrder(queryParam);

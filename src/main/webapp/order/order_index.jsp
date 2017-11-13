@@ -12,7 +12,7 @@
         <title>订单首页</title>
         <script type="text/javascript">
             $("#query_list").load("order/order_query_list.jsp");
-            
+
             function queryOrder() {
                 $("#query_list").load("order/order_query_list.jsp");
             }
@@ -20,19 +20,6 @@
                 $("#cellPhoneNbr").val('');
                 $("#orderId").val('');
             }
-            $('.form_datetime').datetimepicker({
-                language: 'zh-CN',
-                format: "yyyy-mm-dd",
-                initialDate: new Date(),
-                weekStart: 1,
-                todayBtn: 1,
-                autoclose: true,
-                todayHighlight: 1,
-                maxView: "month",
-                startView: 2,
-                forceParse: 0,
-                showMeridian: 1
-            });
         </script> 
     </head>
     <body>
@@ -45,15 +32,13 @@
                 <div class="form-group">
                     <input type="text" class="form-control"  placeholder="订单编号" id="orderId">
                 </div>
-                <div class="form-group">
-                    <input type="text" value="" readonly class="form_datetime" data-date-format="yyyy-mm-dd">
-                </div>
                 <button type="button" class="btn btn-primary" onclick="queryOrder()">查询</button>
                 <button type="button" class="btn btn-primary" onclick="resetQuery()">重置</button>
             </form>
         </div>
-        <div id="query_list" class="container-fluid text-center">
+        <div id="query_list" class="container-fluid text-left">
 
         </div>
+        
     </body>
 </html>

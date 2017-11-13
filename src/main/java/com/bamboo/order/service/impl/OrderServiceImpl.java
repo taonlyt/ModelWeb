@@ -32,8 +32,8 @@ public class OrderServiceImpl implements IOrderService {
 
     @Override
     public TableList queryOrder(QOrderParam orderParam) {
-        long toatalRecord = orderDao.countByCellPhoneNbr(orderParam);
-        List<QOrder> orderList = orderDao.selectByCellPhoneNbr(orderParam);
+        long toatalRecord = orderDao.countByOrderParam(orderParam);
+        List<QOrder> orderList = orderDao.selectByOrderParam(orderParam);
         TableList tableList = new TableList();
         tableList.setRows(orderList);
         tableList.setTotal(Integer.parseInt(String.valueOf(toatalRecord)));

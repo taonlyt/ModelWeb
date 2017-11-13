@@ -11,7 +11,7 @@ public interface OrderDao {
 
     long countByExample(OrderExample example);
 
-    long countByCellPhoneNbr(QOrderParam orderParam);
+    long countByOrderParam(QOrderParam orderParam);
 
     int deleteByExample(OrderExample example);
 
@@ -23,7 +23,7 @@ public interface OrderDao {
 
     List<Order> selectByExample(OrderExample example);
 
-    List<QOrder> selectByCellPhoneNbr(QOrderParam orderParam);
+    List<QOrder> selectByOrderParam(QOrderParam orderParam);
 
     Order selectByPrimaryKey(String orderId);
 
