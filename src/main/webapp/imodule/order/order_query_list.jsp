@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
             <title>订单列表</title>
-            <script src="order/js/order-query.js"></script>
+            <script src="imodule/order/js/order-query.js"></script>
             <script>
                 $(document).ready(function () {
                     $("#btn_add_order").click(function () {

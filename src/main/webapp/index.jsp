@@ -12,17 +12,18 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--jquery-->
-        <script src="jquery/jquery-3.2.0.min.js"></script>
+        <script src="assets/jquery/jquery-3.2.0.min.js"></script>
         <!--bootstrap-->
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <!--bootstap table-->
-        <link rel="stylesheet" href="bootstrap/css/bootstrap-table.min.css">
-        <link rel="stylesheet" href="bootstrap/css/bootstrap-datetimepicker.min.css">
-        <script src="bootstrap/js/bootstrap-table.min.js"></script>
-        <script src="bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
-        <script src="bootstrap/js/bootstrap-datetimepicker.min.js"></script>
-        <script src="bootstrap/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-table.min.css">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-datetimepicker.min.css">
+        <script src="assets/bootstrap/js/bootstrap-table.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+        <script src="assets/bootstrap/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
         <style>
             /* Remove the navbar's default margin-bottom and rounded borders */ 
             .navbar {
@@ -77,12 +78,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>                        
                     </button>
-                    <a class="navbar-brand" href="#"><font style=" font-weight: 900; color: #0078ae">萌萌哒童装店</font></a>
+                    <a class="navbar-brand" href="#"><font style=" font-weight: 900; color: #0078ae"></font></a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="javascript:loadPage('order/order_index.jsp')">订单查询</a></li>
-                        <li><a href="javascript:loadPage('order/order_add_index.jsp')">创建订单</a></li>
+                        <li class="active"><a href="javascript:loadPage('imodule/order/order_index.jsp')">aa</a></li>
+                        <li><a href="javascript:loadPage('imodule/order/order_add_index.jsp')">bb</a></li>
+                        <li><a href="javascript:loadPage('imodule/order/test.jsp')">cc</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
@@ -99,8 +101,8 @@
 
                 </div>
                 <!--右侧广告位-->
-<!--                <div class="col-sm-2 text-left left-zero contentRight" id="contentRight"> 
-                </div>-->
+                <!--                <div class="col-sm-2 text-left left-zero contentRight" id="contentRight"> 
+                                </div>-->
                 <!--页面底部-->
                 <div class="container-fluid" id="footer">
                     <p>
@@ -111,8 +113,8 @@
         </div>
         <script>
             $("#contentBody").css("height", screen.height);//自适应高度
-            $("#contentBody").load("order/order_index.jsp");
-            function loadPage(pageUrl){
+            $("#contentBody").load("imodule/order/order_index.jsp");
+            function loadPage(pageUrl) {
                 $("#contentBody").load(pageUrl);
             }
         </script>

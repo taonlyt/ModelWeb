@@ -11,10 +11,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>订单首页</title>
         <script type="text/javascript">
-            $("#query_list").load("order/order_query_list.jsp");
+            $("#query_list").load("imodule/order/order_query_list.jsp");
 
             function queryOrder() {
-                $("#query_list").load("order/order_query_list.jsp");
+                $("#query_list").load("imodule/order/order_query_list.jsp");
             }
             function resetQuery() {
                 $("#cellPhoneNbr").val('');
