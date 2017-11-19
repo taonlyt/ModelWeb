@@ -89,4 +89,10 @@ public class Order implements Serializable {
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" + "orderId=" + orderId + ", custId=" + custId + ", originalMoney=" + originalMoney + ", discountMoney=" + discountMoney + ", payedMoney=" + payedMoney + ", discountType=" + discountType + ", orderStatus=" + orderStatus + ", createDate=" + createDate + '}';
+    }
+    
 }

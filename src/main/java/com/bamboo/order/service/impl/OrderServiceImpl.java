@@ -34,6 +34,7 @@ public class OrderServiceImpl implements IOrderService {
     public TableList queryOrder(QOrderParam orderParam) {
         long toatalRecord = orderDao.countByOrderParam(orderParam);
         List<QOrder> orderList = orderDao.selectByOrderParam(orderParam);
+        System.out.println(orderList.get(0).toString());
         TableList tableList = new TableList();
         tableList.setRows(orderList);
         tableList.setTotal(Integer.parseInt(String.valueOf(toatalRecord)));

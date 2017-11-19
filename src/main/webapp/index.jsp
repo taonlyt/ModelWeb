@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : index
     Created on : 2017-9-1, 14:48:11
     Author     : luotao
@@ -8,13 +8,14 @@
 <!DOCTYPE html>
 <html lang="zh">
     <head>
-        <title>萌萌哒</title>
+        <title>小盟主</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--jquery-->
         <script src="assets/jquery/jquery-3.2.0.min.js"></script>
         <!--bootstrap-->
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-switch.min.css">
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <!--bootstap table-->
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-table.min.css">
@@ -23,9 +24,10 @@
         <script src="assets/bootstrap/js/bootstrap-table-zh-CN.min.js"></script>
         <script src="assets/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
         <script src="assets/bootstrap/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+        <script src="assets/vue/vue.min.js"></script>
 
         <style>
-            /* Remove the navbar's default margin-bottom and rounded borders */ 
+            /* Remove the navbar's default margin-bottom and rounded borders */
             .navbar {
                 margin-bottom: 0;
                 border-radius: 0;
@@ -63,7 +65,7 @@
                     height: auto;
                     padding: 15px;
                 }
-                .row.content {height:auto;} 
+                .row.content {height:auto;}
             }
         </style>
 
@@ -72,19 +74,19 @@
         <!--页面头部-->
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
-                <div class="navbar-header">
+              <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>                        
+                        <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><font style=" font-weight: 900; color: #0078ae"></font></a>
+                    <a class="navbar-brand" href="#"><font style=" font-weight: 900; color: #ac2925"></font>小盟主</a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="javascript:loadPage('imodule/order/order_index.jsp')">aa</a></li>
-                        <li><a href="javascript:loadPage('imodule/order/order_add_index.jsp')">bb</a></li>
-                        <li><a href="javascript:loadPage('imodule/order/test.jsp')">cc</a></li>
+                        <li class="active"><a href="javascript:loadPage('imodule/order/order_index.jsp')">订单查询</a></li>
+                        <li><a href="javascript:loadPage('imodule/order/order_add_index.jsp')">订单录入</a></li>
+                        <li><a href="javascript:loadPage('imodule/order/test.jsp')">其他功能</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
@@ -93,15 +95,15 @@
             </div>
         </nav>
         <!--页面主体-->
-        <div class="container-fluid text-center">   
+        <div class="container-fluid text-center">
             <div class="row content">
                 <!--左侧菜单-->
                 <!--中间内容-->
-                <div class="col-sm-12 text-left left-zero" id="contentBody"> 
+                <div class="col-sm-12 text-left left-zero" id="contentBody">
 
                 </div>
                 <!--右侧广告位-->
-                <!--                <div class="col-sm-2 text-left left-zero contentRight" id="contentRight"> 
+                <!--                <div class="col-sm-2 text-left left-zero contentRight" id="contentRight">
                                 </div>-->
                 <!--页面底部-->
                 <div class="container-fluid" id="footer">
@@ -120,4 +122,3 @@
         </script>
     </body>
 </html>
-

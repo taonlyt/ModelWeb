@@ -19,7 +19,7 @@
         <result column="PAYED_MONEY" jdbcType="DECIMAL" property="payedMoney" />
         <result column="DISCOUNT_TYPE" jdbcType="INTEGER" property="discountType" />
         <result column="ORDER_STATUS" jdbcType="SMALLINT" property="orderStatus" />
-        <result column="CREATE_DATE" jdbcType="DATE" property="createDate" />
+        <result column="CREATE_DATE" jdbcType="DATE" property="createDate" javaType="java.util.Date"/>
         <result column="CUST_NAME" jdbcType="VARCHAR" property="custName" />
         <result column="CELL_PHONE_NBR" jdbcType="VARCHAR" property="cellPhoneNbr" />
     </resultMap>
