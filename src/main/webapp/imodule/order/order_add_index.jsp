@@ -18,6 +18,10 @@
                 border-bottom: 1px #080808 solid;
                 border-radius: 0 0 0 0;
             }
+            .font-lg{
+                font-size: 18px;
+                color: green
+            }
         </style>
     </head>
     <body>
@@ -27,12 +31,6 @@
                     <h3 class="panel-title">订单信息</h3>
                 </div>
                 <div id="" class="panel-body">
-                    <form class="form-inline" role="form">
-                        <div class="form-group col-lg-8">
-                            <label class=""  for="inputfile"><h3>客户手机号码：</h3></label>
-                            <input type="text" class="form-control input-lg" v-model="input_phone">
-                        </div>
-                    </form>
                     <div id="m_order_detail">
                         <table class="table table-hover table-bordered table-condensed">
                             <th width="2%">#</th>
@@ -256,25 +254,27 @@
                     </div>
                     <div id="m_order">
                         <form class="form-inline" role="form">
-                            <div class="form-group col-lg-3">
-                                <label class="" for="inputfile"><h3>总计：{{oMoney}} 元</h3></label>
+                            <div class="form-group col-sm-1">
+                                <label class="" style="color:red" for="inputfile"><h4>总计：{{oMoney}} 元</h4></label>
                             </div>
-                            <div class="form-group col-lg-3">
-                                <label class=""  for="inputfile"><h3>实收：</h3></label>
-                                <input type="text" class="input-lg bottom-bordered" v-model="sMoney">
-                                <label class="" for="inputfile"><h3>元</h3></label>
+                            <div class="form-group col-sm-3">
+                                <label class="" style="color: #31b0d5"   for="inputfile"><h4>实收：</h4></label>
+                                <input type="text" class="form-control font-lg" v-model="sMoney">
+                                <label class="" style="color: #31b0d5"  for="inputfile"><h4>元</h4></label>
                             </div>
-                            <div class="form-group col-lg-3">
-                                <label class="" for="inputfile"><h3>找零：{{charge}}</h3></label>
-                                <label class="" for="inputfile"><h3>元</h3></label>
+                            <div class="form-group col-sm-2">
+                                <label class="" style="color: #843534" for="inputfile"><h4>找零：{{charge}}元</h4></label>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label class="" style="color: #31b0d5"  for="inputfile"><h4>手机号码：</h4></label>
+                                <input type="text" class="form-control font-lg" v-model="input_phone">
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <div class="btn-group col-md-offset-11">
-                        <button class="btn btn-lg btn-primary">保存</button>
-                        <button class="btn btn-lg btn-primary">取消</button>
+                    <div class="col-md-offset-6">
+                        <button class="btn btn-info">保存</button>
                     </div>
                 </div>
             </div>
@@ -372,6 +372,7 @@
                 data: {
                     oMoney: '0.00',
                     sMoney: '0.00',
+                    input_phone:""
                 },
                 computed: {
                     // 计算属性的 getter
