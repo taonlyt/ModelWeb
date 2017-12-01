@@ -254,10 +254,10 @@
                     </div>
                     <div id="m_order">
                         <form class="form-inline" role="form">
-                            <div class="form-group col-sm-1">
+                            <div class="form-group col-sm-2">
                                 <label class="" style="color:red" for="inputfile"><h4>总计：{{oMoney}} 元</h4></label>
                             </div>
-                            <div class="form-group col-sm-3">
+                            <div class="form-group col-sm-4">
                                 <label class="" style="color: #31b0d5"   for="inputfile"><h4>实收：</h4></label>
                                 <input type="text" class="form-control font-lg" v-model="sMoney">
                                 <label class="" style="color: #31b0d5"  for="inputfile"><h4>元</h4></label>
@@ -266,8 +266,7 @@
                                 <label class="" style="color: #843534" for="inputfile"><h4>找零：{{charge}}元</h4></label>
                             </div>
                             <div class="form-group col-sm-4">
-                                <label class="" style="color: #31b0d5"  for="inputfile"><h4>手机号码：</h4></label>
-                                <input type="text" class="form-control font-lg" v-model="input_phone">
+                                <input type="text" class="form-control font-lg" placeholder="客户手机号码" v-model="input_phone">
                             </div>
                         </form>
                     </div>
