@@ -25,6 +25,7 @@
         <script src="assets/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
         <script src="assets/bootstrap/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
         <script src="assets/vue/vue.min.js"></script>
+        <!--<script src="assets/axios/axios.min.js"></script>-->
 
         <style>
             /* Remove the navbar's default margin-bottom and rounded borders */
